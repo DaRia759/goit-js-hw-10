@@ -5,8 +5,8 @@ import debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
 const refs = {
-    countryList: document.querySelector('country-list'),
-    countryInfo: document.querySelector('country-info'),
+    countryList: document.querySelector('.country-list'),
+    countryInfo: document.querySelector('.country-info'),
     input: document.querySelector('#search-box'),
 };
 
@@ -84,6 +84,6 @@ function uniqueCountryName(countriesList) {
 
 
 function clearMarkup() {
-    refs.countryList.innerHTML = "";
-    refs.countryInfo.innerHTML = "";
+    refs.countryList.innerHTML = '';
+    refs.countryInfo.innerHTML = '';
 };
