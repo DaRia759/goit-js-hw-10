@@ -1,7 +1,8 @@
-const filters = 'capital, population, flags, languages';
-const BASE_URL = "https://restcountries.com/v3.1";
 
 export default function fetchCountries(name) {
+    const filters = 'capital, population, flags, languages';
+    const BASE_URL = "https://restcountries.com/v3.1";
+
     const URL = `${BASE_URL}/name/${name}?${filters};`;
 
     return fetch(URL)

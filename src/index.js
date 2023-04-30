@@ -21,8 +21,8 @@ function onCountrySearch(e){
     };
 
     fetchCountries(searchedCountry)
-    .then(countryLimitOnPage)
-    .catch(onError);
+    .then(countryLimitOnPage())
+    .catch(onError());
 };
 
 function countryLimitOnPage(data) {
@@ -53,7 +53,7 @@ function listOfFoundedCountries(countriesList) {
         </li>`;
         })
         .join('');
-    clearMarkup();
+    // clearMarkup();
     return refs.countryList.insertAdjacentElement('beforeend', markup);
 };
 
@@ -78,7 +78,7 @@ function uniqueCountryName(countriesList) {
             </ul>`;
         })
         .join('');
-    clearMarkup();
+    // clearMarkup();
     return refs.countryList.insertAdjacentElement('beforeend', markup);
 };
 
