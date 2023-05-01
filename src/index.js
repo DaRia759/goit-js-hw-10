@@ -30,10 +30,10 @@ function countryLimitOnPage(data) {
     if (data.length > 10) {
         return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     } else if (data.length >= 2 && data.length <= 10) { 
-        listOfFoundedCountries();
+        listOfFoundedCountries(data);
         return;
     } else {
-        uniqueCountryName();
+        uniqueCountryName(data);
         return;
     }
 };
@@ -54,7 +54,7 @@ function listOfFoundedCountries(countriesList) {
             })
         .join('');
     clearMarkup();
-    return refs.countryList.insertAdjacentElement('beforeend', markup);
+    return refs.countryList.insertAdjacentHTML('beforeend', markup);
 };
 
 
@@ -78,8 +78,8 @@ function uniqueCountryName(countriesList) {
             </ul>`;
         })
         .join('');
-    // clearMarkup();
-    return refs.countryList.insertAdjacentElement('beforeend', markup);
+     clearMarkup();
+    return refs.countryList.insertAdjacentHTML('beforeend', markup);
 };
 
 

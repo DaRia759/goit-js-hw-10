@@ -1,9 +1,9 @@
 
 export default function fetchCountries(name) {
-    const filters = 'capital,population,flags,languages';
+    const filters = 'name,capital,population,flags,languages';
     const BASE_URL = "https://restcountries.com/v3.1";
 
-    const URL = `${BASE_URL}/name/${name}?fields=${filters};`;
+    const URL = `${BASE_URL}/name/${name}?fields=${filters}`;
 
     return fetch(URL)
         .then(responce => {
