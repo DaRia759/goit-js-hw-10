@@ -10,7 +10,7 @@ const refs = {
     input: document.querySelector('#search-box'),
 };
 
-refs.input.addEventListener('click', debounce(onCountrySearch, DEBOUNCE_DELAY));
+refs.input.addEventListener('input', debounce(onCountrySearch, DEBOUNCE_DELAY));
 
 function onCountrySearch(e){
     let searchedCountry = e.target.value.trim().toLowerCase();
@@ -21,14 +21,14 @@ function onCountrySearch(e){
     };
 
     fetchCountries(searchedCountry)
-    .then(countryLimitOnPage())
-    .catch(onError());
+    .then(countryLimitOnPage)
+    .catch(onError);
+    
 };
 
 function countryLimitOnPage(data) {
     if (data.length > 10) {
-        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-        clearMarkup();
+        return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     } else if (data.length >= 2 && data.length <= 10) { 
         listOfFoundedCountries();
         return;
@@ -48,12 +48,12 @@ function listOfFoundedCountries(countriesList) {
     const markup = countriesList
         .map(({ flags, name }) => {
             return `<li class="country-item">
-        <img class="country-flag" src="${flags.svg}" alt="flags" width = "50" height = "30">
-        <h2 class="country-name">${name.official}</h2> 
-        </li>`;
-        })
+            <img class="country-flag" src="${flags.svg}" alt="flags" width = "50" height = "30">
+            <h2 class="country-name">${name.official}</h2> 
+            </li>`;
+            })
         .join('');
-    // clearMarkup();
+    clearMarkup();
     return refs.countryList.insertAdjacentElement('beforeend', markup);
 };
 
